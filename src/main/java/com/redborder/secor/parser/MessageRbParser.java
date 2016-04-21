@@ -1,4 +1,4 @@
-package com.redborder.secor;
+package com.redborder.secor.parser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pinterest.secor.common.SecorConfig;
