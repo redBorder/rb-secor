@@ -22,7 +22,7 @@ Requires: java secor
 mvn clean package
 
 %install
-mkdir -p %{buildroot}/usr/share/%{name}
+mkdir -p %{buildroot}/usr/lib/%{name}
 install -D -m 644 target/rb-secor*-SNAPSHOT.jar %{buildroot}/usr/lib/%{name}
 install -D -m 644 jets3t.properties %{buildroot}/etc/secor/jets3t.properties
 
@@ -31,8 +31,8 @@ rm -rf %{buildroot}
 
 %files
 %defattr(644,root,root)
-/usr/share/%{name}
-%config /usr/etc/secor/jets3t.properties
+/usr/lib/%{name}
+%config /etc/secor/jets3t.properties
 
 %changelog
 * Fri Jun 10 2016 Alberto Rodriguez <arodriguez@redborder.com> - 1.0.0-1
