@@ -15,6 +15,8 @@ Requires: java secor
 %description
 %{summary}
 
+%global debug_package %{nil}
+
 %prep
 %setup -qn %{name}-%{version}
 
