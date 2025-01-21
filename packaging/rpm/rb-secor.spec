@@ -38,7 +38,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(644,root,root)
-/var/secor/%{name}
+/var/secor/
 /var/secor/lib
 /usr/lib/systemd/system/*
 /usr/lib/redborder/bin/*
