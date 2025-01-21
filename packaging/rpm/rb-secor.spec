@@ -24,16 +24,24 @@ Requires: java secor
 mvn clean package
 
 %install
-mkdir -p %{buildroot}/usr/share/%{name}
-install -D -m 644 target/rb-secor*-SNAPSHOT.jar %{buildroot}/usr/share/%{name}
+mkdir -p %{buildroot}/var/secor/%{name}
+install -D -m 644 target/rb-secor*-SNAPSHOT.jar %{buildroot}/var/secor/%{name}
+install -D -m 644 resources/lib/* %{buildroot}/var/secor/lib/
+install -D -m 644 resources/systemd/* %{buildroot}/usr/lib/systemd/system/
+install -D -m 755 resources/scripts/* %{buildroot}/usr/lib/redborder/bin/
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(644,root,root)
-/usr/share/%{name}
+/var/secor/%{name}
+/var/secor/lib
+/usr/lib/systemd/system/*
+/usr/lib/redborder/bin/*
 
 %changelog
+* Fri Jun 10 2016 Alberto Rodriguez <arodriguez@redborder.com> - 1.0.0-1
+- first spec version
 * Fri Jun 10 2016 Alberto Rodriguez <arodriguez@redborder.com> - 1.0.0-1
 - first spec version
