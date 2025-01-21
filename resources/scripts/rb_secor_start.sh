@@ -20,7 +20,7 @@ cd /var/secor
 exec java -ea -Dsecor_group=secor_partition \
   -Dlog4j.configuration=log4j.prod.properties \
   -Dconfig=secor.prod.partition.properties \
-  -cp secor.jar:/var/secor:/var/secor/*:/var/secor/lib/*:rb-secor.jar \
+  -cp rb-secor-1.0-SNAPSHOT.jar:/var/secor:/var/secor/*:/var/secor/lib/*:rb-secor-1.0-SNAPSHOT.jar \
   com.pinterest.secor.main.ConsumerMain
 
 

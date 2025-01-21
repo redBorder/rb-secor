@@ -15,11 +15,10 @@
 # along with redBorder. If not, see <http://www.gnu.org/licenses/>.
 #######################################################################
 
+cd /var/secor
 
 exec java -ea -Dsecor_group=secor_vault_partition \
   -Dlog4j.configuration=log4j-vault.prod.properties \
   -Dconfig=secor-vault.prod.partition.properties \
-  -cp secor.jar:/var/secor:/var/secor/*:/var/secor/lib/*:rb-secor.jar \
+  -cp rb-secor-1.0-SNAPSHOT.jar:/var/secor:/var/secor/*:/var/secor/lib/*:rb-secor-1.0-SNAPSHOT.jar \
   com.pinterest.secor.main.ConsumerMain
-
-
