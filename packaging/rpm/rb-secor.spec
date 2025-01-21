@@ -25,6 +25,7 @@ mvn clean package
 
 %install
 mkdir -p %{buildroot}/var/secor/%{name}
+mkdir -p %{buildroot}/var/secor/lib
 install -D -m 644 target/rb-secor*-SNAPSHOT.jar %{buildroot}/var/secor/%{name}
 install -D -m 644 resources/lib/* %{buildroot}/var/secor/lib/
 install -D -m 644 resources/systemd/* %{buildroot}/usr/lib/systemd/system/
