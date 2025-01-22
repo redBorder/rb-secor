@@ -21,8 +21,8 @@ source /etc/sysconfig/secor-vault
 SECOR_JAR=$(find /usr/lib/secor -name "secor-*.jar" | head -n 1)
 RB_SECOR_JAR=$(find /var/secor/ -name "rb-secor-*.jar" | head -n 1 | xargs basename)
 
-exec java -Xmx${MEMTOTAL}k -Xms${MEMTOTAL}k -ea -Dsecor_group=secor_partition \
-  -Dlog4j.configuration=log4j.prod.properties \
-  -Dconfig=secor.prod.partition.properties \
+exec java -Xmx${MEMTOTAL}k -Xms${MEMTOTAL}k -ea -Dsecor_group=secor_vault_partition \
+  -Dlog4j.configuration=log4j-vault.prod.properties \
+  -Dconfig=secor-vault.prod.partition.properties \
   -cp ${SECOR_JAR}:/var/secor:/var/secor/*:/var/secor/lib/*:${RB_SECOR_JAR} \
   com.pinterest.secor.main.ConsumerMain
