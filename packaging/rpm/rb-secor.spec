@@ -31,20 +31,25 @@ mkdir -p %{buildroot}/usr/lib/redborder/bin/
 install -D -m 644 target/rb-secor*-SNAPSHOT.jar %{buildroot}/var/secor/
 install -D -m 644 resources/lib/* %{buildroot}/var/secor/lib/
 install -D -m 644 resources/systemd/* %{buildroot}/usr/lib/systemd/system/
-install -D -m 755 resources/scripts/* %{buildroot}/usr/lib/redborder/bin/
+install -D -m 755 resources/scripts/*.sh %{buildroot}/usr/lib/redborder/bin/
+
+%post
+/bin/systemctl daemon-reload || :
 
 %clean
 rm -rf %{buildroot}
 
 %files
+%defattr(0755,root,root)
+/usr/lib/redborder/bin/*
 %defattr(644,root,root)
 /var/secor/
 /var/secor/lib
 /usr/lib/systemd/system/*
-/usr/lib/redborder/bin/*
 
 %changelog
-* Fri Jun 10 2016 Alberto Rodriguez <arodriguez@redborder.com> - 1.0.0-1
-- first spec version
+* Wen Jan 22 2025 Miguel Alvarez <malvarez@redborder.com> -
+- Add secor and secor vault systemd files
+
 * Fri Jun 10 2016 Alberto Rodriguez <arodriguez@redborder.com> - 1.0.0-1
 - first spec version

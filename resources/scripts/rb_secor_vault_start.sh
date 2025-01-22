@@ -17,8 +17,11 @@
 
 cd /var/secor
 
+SECOR_JAR=$(find /usr/lib/secor -name "secor-*.jar" | head -n 1)
+RB_SECOR_JAR=$(find /var/secor/ -name "rb-secor-*.jar" | head -n 1 | xargs basename)
+
 exec java -ea -Dsecor_group=secor_vault_partition \
   -Dlog4j.configuration=log4j-vault.prod.properties \
   -Dconfig=secor-vault.prod.partition.properties \
-  -cp /usr/lib/secor/secor-0.20-SNAPSHOT.jar:/var/secor:/var/secor/*:/var/secor/lib/*:rb-secor-1.0-SNAPSHOT.jar \
+  -cp ${SECOR_JAR}:/var/secor:/var/secor/*:/var/secor/lib/*:${RB_SECOR_JAR} \
   com.pinterest.secor.main.ConsumerMain
