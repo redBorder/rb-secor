@@ -16,14 +16,13 @@
 #######################################################################
 
 cd /var/secor
+source /etc/sysconfig/secor
 
 SECOR_JAR=$(find /usr/lib/secor -name "secor-*.jar" | head -n 1)
 RB_SECOR_JAR=$(find /var/secor/ -name "rb-secor-*.jar" | head -n 1 | xargs basename)
 
-exec java -ea -Dsecor_group=secor_partition \
+exec java -Xmx${MEMTOTAL}k -Xms${MEMTOTAL}k -ea -Dsecor_group=secor_partition \
   -Dlog4j.configuration=log4j.prod.properties \
   -Dconfig=secor.prod.partition.properties \
   -cp ${SECOR_JAR}:/var/secor:/var/secor/*:/var/secor/lib/*:${RB_SECOR_JAR} \
   com.pinterest.secor.main.ConsumerMain
-
-
