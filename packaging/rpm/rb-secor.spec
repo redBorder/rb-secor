@@ -24,7 +24,6 @@ Requires: java secor
 mvn clean package
 
 %install
-<<<<<<< HEAD
 mkdir -p %{buildroot}/var/secor/
 mkdir -p %{buildroot}/var/secor/lib
 mkdir -p %{buildroot}/usr/lib/systemd/system/
@@ -36,11 +35,6 @@ install -D -m 755 resources/scripts/*.sh %{buildroot}/usr/lib/redborder/bin/
 
 %post
 /bin/systemctl daemon-reload || :
-=======
-mkdir -p %{buildroot}/usr/lib/%{name}
-install -D -m 644 target/rb-secor*-SNAPSHOT.jar %{buildroot}/usr/lib/%{name}
-install -D -m 644 jets3t.properties %{buildroot}/etc/secor/jets3t.properties
->>>>>>> origin/development
 
 %clean
 rm -rf %{buildroot}
@@ -49,14 +43,9 @@ rm -rf %{buildroot}
 %defattr(0755,root,root)
 /usr/lib/redborder/bin/*
 %defattr(644,root,root)
-<<<<<<< HEAD
 /var/secor/
 /var/secor/lib
 /usr/lib/systemd/system/*
-=======
-/usr/lib/%{name}
-%config /etc/secor/jets3t.properties
->>>>>>> origin/development
 
 %changelog
 * Wen Jan 22 2025 Miguel Alvarez <malvarez@redborder.com> -

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 all: rpm
 
 rpm:
@@ -9,7 +8,3 @@ rpmtest:
 
 clean:
 	rm -rf SOURCES pkgs
-=======
-rpm:  
-	$(MAKE) -C packaging/rpm
->>>>>>> origin/development
