@@ -2,6 +2,10 @@
 
 rb-secor is an extension of secor service, which you can find in this repo: https://github.com/pinterest/secor
 
+## Platforms
+
+- Rocky Linux 9.5
+
 ## Features
 
 rb-secor provides two additional features in two new classes:
