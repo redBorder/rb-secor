@@ -48,7 +48,7 @@ rm -rf %{buildroot}
 /usr/lib/systemd/system/*
 
 %changelog
-* Wen Jan 22 2025 Miguel Alvarez <malvarez@redborder.com> -
+* Wed Jan 22 2025 Miguel Alvarez <malvarez@redborder.com> -
 - Add secor and secor vault systemd files
 
 * Fri Jun 10 2016 Alberto Rodriguez <arodriguez@redborder.com> - 1.0.0-1
