@@ -15,6 +15,8 @@ Requires: java secor
 %description
 %{summary}
 
+%global debug_package %{nil}
+
 %prep
 %setup -qn %{name}-%{version}
 
@@ -22,18 +24,32 @@ Requires: java secor
 mvn clean package
 
 %install
-mkdir -p %{buildroot}/usr/lib/%{name}
-install -D -m 644 target/rb-secor*-SNAPSHOT.jar %{buildroot}/usr/lib/%{name}
-install -D -m 644 jets3t.properties %{buildroot}/etc/secor/jets3t.properties
+mkdir -p %{buildroot}/var/secor/
+mkdir -p %{buildroot}/var/secor/lib
+mkdir -p %{buildroot}/usr/lib/systemd/system/
+mkdir -p %{buildroot}/usr/lib/redborder/bin/
+install -D -m 644 target/rb-secor*-SNAPSHOT.jar %{buildroot}/var/secor/
+install -D -m 644 resources/lib/* %{buildroot}/var/secor/lib/
+install -D -m 644 resources/systemd/* %{buildroot}/usr/lib/systemd/system/
+install -D -m 755 resources/scripts/*.sh %{buildroot}/usr/lib/redborder/bin/
+
+%post
+/bin/systemctl daemon-reload || :
 
 %clean
 rm -rf %{buildroot}
 
 %files
+%defattr(0755,root,root)
+/usr/lib/redborder/bin/*
 %defattr(644,root,root)
-/usr/lib/%{name}
-%config /etc/secor/jets3t.properties
+/var/secor/
+/var/secor/lib
+/usr/lib/systemd/system/*
 
 %changelog
+* Wed Jan 22 2025 Miguel Alvarez <malvarez@redborder.com> -
+- Add secor and secor vault systemd files
+
 * Fri Jun 10 2016 Alberto Rodriguez <arodriguez@redborder.com> - 1.0.0-1
 - first spec version
