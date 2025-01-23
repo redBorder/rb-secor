@@ -1,0 +1,13 @@
+[Unit]
+Description=RB Secor Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/redborder/bin/rb_secor_start.sh
+Restart=on-failure
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
